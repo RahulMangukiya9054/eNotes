@@ -39,7 +39,7 @@ const Signup = () => {
             setLoading(false)
 
         } catch (error) {
-            showAlert("danger", "Enter valid details and try again!")
+            showAlert("danger", "User with this email already exist, Please try using a different Email!")
             setProgress(100)
             setLoading(false)
         }
