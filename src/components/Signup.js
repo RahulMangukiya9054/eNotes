@@ -29,7 +29,6 @@ const Signup = () => {
             );
             // console.log('res====>', res)
             setProgress(70)
-
             if (res.data.type === "Success") {
                 // Redirect to login page
                 navigate('/login');
