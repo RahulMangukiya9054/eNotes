@@ -52,9 +52,9 @@ const Login = () => {
     }
 
     return (
-        <div className='py-4'>
-            <h2 className='display-4 text-center'>Log in to iNotebook</h2>
+        <div className='py-4 d-flex justify-content-center'>
             <div className="container-fluid h-custom my-3">
+                <h2 className='display-4 text-center'>Log in to iNotebook</h2>
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-md-9 col-lg-6 col-xl-5">
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
