@@ -33,15 +33,15 @@ const Signup = () => {
             if (res.data.type === "Success") {
                 // Redirect to login page
                 navigate('/login');
+                setLoading(false)
+                setProgress(100)
                 showAlert("success", "Account created successfully!, Please Log in to access the services.")
             }
-            setProgress(100)
-            setLoading(false)
 
         } catch (error) {
-            showAlert("danger", "User with this email already exist, Please try using a different Email!")
-            setProgress(100)
             setLoading(false)
+            setProgress(100)
+            showAlert("danger", "User with this email already exist, Please try using a different Email!")
         }
     }
 

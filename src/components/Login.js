@@ -33,16 +33,16 @@ const Login = () => {
                 // Redirect to home page
                 let token = res.data.data.authToken[0].token;
                 localStorage.setItem("token", token)
-                showAlert("success", "Logged in Successfully!")
                 navigate('/');
+                setLoading(false)
+                setProgress(100)
+                showAlert("success", "Logged in Successfully!")
             }
-            setProgress(100)
-            setLoading(false)
 
         } catch (error) {
-            showAlert("danger", "Invalid Credentials!")
-            setProgress(100)
             setLoading(false)
+            setProgress(100)
+            showAlert("danger", "Invalid Credentials!")
             // console.log('Error:', error.message);
         }
     }

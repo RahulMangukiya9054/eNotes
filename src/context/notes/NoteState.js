@@ -28,14 +28,14 @@ const NoteState = (props) => {
             setProgress(70)
             if (res.data.type === "Success") {
                 setNotes(res.data.data)
-                setProgress(100)
                 setLoading(false)
+                setProgress(100)
             }
 
         } catch (error) {
-            showAlert("danger", "Error while fetching Notes!")
-            setProgress(100)
             setLoading(false)
+            setProgress(100)
+            showAlert("danger", "Error while fetching Notes!")
         }
     }
 
@@ -69,15 +69,15 @@ const NoteState = (props) => {
                     "tag": result.tag
                 }
                 setNotes(notes.concat(note));
-                showAlert("success", "Note added successfully!")
-                setProgress(100)
                 setLoading(false)
+                setProgress(100)
+                showAlert("success", "Note added successfully!")
             }
 
         } catch (error) {
-            showAlert("danger", "Error adding a note!")
-            setProgress(100)
             setLoading(false)
+            setProgress(100)
+            showAlert("danger", "Error adding a note!")
         }
     }
 
@@ -99,16 +99,16 @@ const NoteState = (props) => {
             if (res.data.type === "Success") {
                 const newNotes = notes.filter((note) => { return note._id !== id })
                 setNotes(newNotes)
-                showAlert("success", "Note is successfully deleted!")
-                setProgress(100)
                 setLoading(false)
+                setProgress(100)
+                showAlert("success", "Note is successfully deleted!")
             }
 
 
         } catch (error) {
-            showAlert("danger", "Error deleting a note!")
-            setProgress(100)
             setLoading(false)
+            setProgress(100)
+            showAlert("danger", "Error deleting a note!")
         }
     }
 
@@ -149,15 +149,15 @@ const NoteState = (props) => {
                     }
                 }
                 setNotes(newNotes)
-                showAlert("success", "Note is successfully updated!")
-                setProgress(100)
                 setLoading(false)
+                setProgress(100)
+                showAlert("success", "Note is successfully updated!")
             }
 
         } catch (error) {
-            showAlert("danger", "Error updating a note!")
-            setProgress(100)
             setLoading(false)
+            setProgress(100)
+            showAlert("danger", "Error updating a note!")
         }
     }
 

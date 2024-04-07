@@ -39,14 +39,14 @@ const Profile = () => {
                     createdAt: date
                 }
                 setProfile(profileInfo)
+                setLoading(false)
+                setProgress(100)
             }
-            setProgress(100)
-            setLoading(false)
 
         } catch (error) {
+            setLoading(false)
             setProgress(100)
             showAlert("danger", "Something wents wrong, Please try again later!")
-            setLoading(false)
         }
     }
 
