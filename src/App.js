@@ -11,6 +11,7 @@ import alertContext from './context/alert/alertContext';
 import Profile from './components/Profile';
 import LoadingBar from 'react-top-loading-bar';
 import progressContext from './context/progress/progressContext';
+import Spinner from './components/Spinner';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
   const AlertContext = useContext(alertContext)
   const { alert } = AlertContext;
 
-  const { progress } = useContext(progressContext)
+  const { progress, loading } = useContext(progressContext)
 
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
           progress={progress}
         />
         <Navbar />
+        <Spinner loading={loading} />
         <Alert alert={alert} />
         <div className="container">
           <Routes>

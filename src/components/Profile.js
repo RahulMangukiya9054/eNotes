@@ -10,11 +10,12 @@ const Profile = () => {
     const host = process.env.REACT_APP_HOST;
     const [profile, setProfile] = useState({})
     const { showAlert } = useContext(alertContext)
-    const { setProgress } = useContext(progressContext)
+    const { setProgress, loading, setLoading } = useContext(progressContext)
 
     const fetchProfile = async () => {
         // API Call
         try {
+            setLoading(true)
             const url = `${host}/api/user/getuser`
             setProgress(30)
             const res = await axios.get(url, {
@@ -40,10 +41,12 @@ const Profile = () => {
                 setProfile(profileInfo)
             }
             setProgress(100)
+            setLoading(false)
 
         } catch (error) {
             setProgress(100)
             showAlert("danger", "Something wents wrong, Please try again later!")
+            setLoading(false)
         }
     }
 
@@ -55,7 +58,7 @@ const Profile = () => {
 
     return (
         <div className="container d-flex justify-content-center align-item-center my-5">
-            {profile.name ? <div className="card mb-3" style={{ maxWidth: "540px" }}>
+            {loading ? "" : <div className="card mb-3" style={{ maxWidth: "540px" }}>
                 <div className="row g-0">
                     <div className="col-md-4">
                         <img src="https://t3.ftcdn.net/jpg/00/64/67/52/360_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD.jpg" className="img-fluid rounded-start h-100 w-100" alt="Loading..." />
@@ -70,11 +73,7 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
-                :
-                <div className='container text-center'>
-                    <h2>Error fetching User's Information</h2>
-                    <p>Please, try again later!</p>
-                </div>}
+            }
         </div>
     )
 }

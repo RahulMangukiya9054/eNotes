@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import alertContext from '../context/alert/alertContext';
+import progressContext from '../context/progress/progressContext';
 
 const Navbar = () => {
 
     let location = useLocation()
     const navigate = useNavigate();
     const { showAlert } = useContext(alertContext)
+    const { setLoading } = useContext(progressContext)
 
     const handleHome = () => {
         if (localStorage.getItem("token")) {
@@ -18,9 +20,11 @@ const Navbar = () => {
     }
 
     const handleLogOut = () => {
+        setLoading(true)
         localStorage.removeItem("token")
         showAlert("success", "Log out Successfully!")
         navigate("/login");
+        setLoading(false)
     }
 
     return (

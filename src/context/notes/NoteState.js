@@ -11,10 +11,11 @@ const NoteState = (props) => {
     const [notes, setNotes] = useState(initialNotes)
 
     // Fetch all Notes
-    const fetchAllNotes = async (showAlert, setProgress) => {
+    const fetchAllNotes = async (showAlert, setProgress, setLoading) => {
         // API Call
         try {
             const url = `${host}/api/note/list`
+            setLoading(true)
             setProgress(30)
             const res = await axios.get(url, {
                 headers: {
@@ -28,16 +29,18 @@ const NoteState = (props) => {
             if (res.data.type === "Success") {
                 setNotes(res.data.data)
                 setProgress(100)
+                setLoading(false)
             }
 
         } catch (error) {
             showAlert("danger", "Error while fetching Notes!")
             setProgress(100)
+            setLoading(false)
         }
     }
 
     // Add Note
-    const addNote = async ({ title, description, tag }, showAlert, setProgress) => {
+    const addNote = async ({ title, description, tag }, showAlert, setProgress, setLoading) => {
         // API Call
         try {
             const url = `${host}/api/note/add`
@@ -46,6 +49,7 @@ const NoteState = (props) => {
                 "description": description,
                 "tag": tag
             }
+            setLoading(true)
             setProgress(30)
             const res = await axios.post(url, body, {
                 headers: {
@@ -67,19 +71,22 @@ const NoteState = (props) => {
                 setNotes(notes.concat(note));
                 showAlert("success", "Note added successfully!")
                 setProgress(100)
+                setLoading(false)
             }
 
         } catch (error) {
             showAlert("danger", "Error adding a note!")
             setProgress(100)
+            setLoading(false)
         }
     }
 
     // Delete Note
-    const deleteNote = async (id, showAlert, setProgress) => {
+    const deleteNote = async (id, showAlert, setProgress, setLoading) => {
         // API Call
         try {
             const url = `${host}/api/note/delete/${id}`
+            setLoading(true)
             setProgress(30)
             const res = await axios.delete(url, {
                 headers: {
@@ -94,17 +101,19 @@ const NoteState = (props) => {
                 setNotes(newNotes)
                 showAlert("success", "Note is successfully deleted!")
                 setProgress(100)
+                setLoading(false)
             }
 
 
         } catch (error) {
             showAlert("danger", "Error deleting a note!")
             setProgress(100)
+            setLoading(false)
         }
     }
 
     // Edit Note
-    const editNote = async (id, title, description, tag, showAlert, setProgress) => {
+    const editNote = async (id, title, description, tag, showAlert, setProgress, setLoading) => {
         // API Call
         try {
             const url = `${host}/api/note/update/${id}`
@@ -114,6 +123,7 @@ const NoteState = (props) => {
                 "description": description,
                 "tag": tag
             }
+            setLoading(true)
             setProgress(30)
             const res = await axios.patch(url, body, {
                 headers: {
@@ -141,11 +151,13 @@ const NoteState = (props) => {
                 setNotes(newNotes)
                 showAlert("success", "Note is successfully updated!")
                 setProgress(100)
+                setLoading(false)
             }
 
         } catch (error) {
             showAlert("danger", "Error updating a note!")
             setProgress(100)
+            setLoading(false)
         }
     }
 

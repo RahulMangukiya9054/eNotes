@@ -8,7 +8,7 @@ const AddNote = () => {
     const context = useContext(noteContext);
     const { addNote } = context;
     const { showAlert } = useContext(alertContext)
-    const { setProgress } = useContext(progressContext)
+    const { setProgress, setLoading } = useContext(progressContext)
 
     const [note, setNote] = useState({ title: "", description: "", tag: "" })
 
@@ -18,7 +18,7 @@ const AddNote = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addNote(note, showAlert, setProgress);
+        addNote(note, showAlert, setProgress, setLoading);
         setNote({ title: "", description: "", tag: "" })
     }
 

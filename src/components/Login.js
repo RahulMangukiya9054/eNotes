@@ -13,13 +13,13 @@ const Login = () => {
     const navigate = useNavigate();
 
     const { showAlert } = useContext(alertContext)
-    const { setProgress } = useContext(progressContext)
+    const { setProgress, setLoading } = useContext(progressContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const url = `${host}/api/user/login`;
-
+            setLoading(true)
             setProgress(30)
             const res = await axios.post(url, body, {
                 headers: {
@@ -37,10 +37,12 @@ const Login = () => {
                 navigate('/');
             }
             setProgress(100)
+            setLoading(false)
 
         } catch (error) {
             showAlert("danger", "Invalid Credentials!")
             setProgress(100)
+            setLoading(false)
             // console.log('Error:', error.message);
         }
     }

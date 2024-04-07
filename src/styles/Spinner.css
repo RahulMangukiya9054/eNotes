@@ -1,0 +1,23 @@
+.spinner-modal {
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.596);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fade-in 0.3s ease;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

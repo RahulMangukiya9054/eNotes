@@ -10,7 +10,7 @@ const Notes = () => {
     let context = useContext(noteContext)
     const { notes, fetchAllNotes, editNote, deleteNote } = context;
     const { showAlert } = useContext(alertContext)
-    const { setProgress } = useContext(progressContext)
+    const { setProgress, setLoading } = useContext(progressContext)
     const updatemodalbtn = useRef(null)
     const deletemodalbtn = useRef(null)
     const closeUpdatebtn = useRef(null)
@@ -20,7 +20,7 @@ const Notes = () => {
 
     useEffect(() => {
         if (localStorage.getItem("token")) {
-            fetchAllNotes(showAlert, setProgress)
+            fetchAllNotes(showAlert, setProgress, setLoading)
         }
         else {
             navigate("/login");
@@ -44,12 +44,12 @@ const Notes = () => {
     }
 
     const handleUpdate = (e) => {
-        editNote(note.id, note.etitle, note.edescription, note.etag, showAlert, setProgress)
+        editNote(note.id, note.etitle, note.edescription, note.etag, showAlert, setProgress, setLoading)
         closeUpdatebtn.current.click()
     }
 
     const handleDelete = (e) => {
-        deleteNote(note.id, showAlert, setProgress)
+        deleteNote(note.id, showAlert, setProgress, setLoading)
         closeDeletebtn.current.click()
     }
 

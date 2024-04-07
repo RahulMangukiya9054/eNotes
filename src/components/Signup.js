@@ -13,13 +13,13 @@ const Signup = () => {
     const navigate = useNavigate();
 
     const { showAlert } = useContext(alertContext)
-    const { setProgress } = useContext(progressContext)
+    const { setProgress, setLoading } = useContext(progressContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const url = `${host}/api/user/add`
-
+            setLoading(true)
             setProgress(30)
             const res = await axios.post(url, body, {
                 headers: {
@@ -36,10 +36,12 @@ const Signup = () => {
                 showAlert("success", "Account created successfully!, Please Log in to access the services.")
             }
             setProgress(100)
+            setLoading(false)
 
         } catch (error) {
             showAlert("danger", "Enter valid details and try again!")
             setProgress(100)
+            setLoading(false)
         }
     }
 
