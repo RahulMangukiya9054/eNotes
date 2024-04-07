@@ -20,7 +20,7 @@ const Profile = () => {
             setProgress(30)
             const res = await axios.get(url, {
                 headers: {
-                    'authorization': localStorage.getItem("token"),
+                    'authorization': localStorage.getItem("iNotebook-tkn"),
                     'Content-Type': 'application/json'
                 }
             }

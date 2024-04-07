@@ -11,7 +11,7 @@ const Navbar = () => {
     const { setLoading } = useContext(progressContext)
 
     const handleHome = () => {
-        if (localStorage.getItem("token")) {
+        if (localStorage.getItem("iNotebook-tkn")) {
             navigate("/");
         }
         else {
@@ -21,7 +21,7 @@ const Navbar = () => {
 
     const handleLogOut = () => {
         setLoading(true)
-        localStorage.removeItem("token")
+        localStorage.removeItem("iNotebook-tkn")
         showAlert("success", "Log out Successfully!")
         navigate("/login");
         setLoading(false)
@@ -43,7 +43,7 @@ const Navbar = () => {
                             <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} to="./about">About</Link>
                         </li>
                     </ul>
-                    {localStorage.getItem("token") ? <form className="d-flex">
+                    {localStorage.getItem("iNotebook-tkn") ? <form className="d-flex">
                         <Link className="btn btn-primary mx-1" to="./profile" role="button"><i className="fa-regular fa-user" title='Profile'></i></Link>
                         <Link className="btn btn-danger mx-1" to="./login" role="button" onClick={handleLogOut}>Log out</Link>
                     </form> : <form className="d-flex">

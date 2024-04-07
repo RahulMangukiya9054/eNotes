@@ -19,7 +19,7 @@ const NoteState = (props) => {
             setProgress(30)
             const res = await axios.get(url, {
                 headers: {
-                    'authorization': localStorage.getItem("token"),
+                    'authorization': localStorage.getItem("iNotebook-tkn"),
                     'Content-Type': 'application/json'
                 }
             }
@@ -53,7 +53,7 @@ const NoteState = (props) => {
             setProgress(30)
             const res = await axios.post(url, body, {
                 headers: {
-                    'authorization': localStorage.getItem("token"),
+                    'authorization': localStorage.getItem("iNotebook-tkn"),
                     'Content-Type': 'application/json'
                 }
             }
@@ -90,7 +90,7 @@ const NoteState = (props) => {
             setProgress(30)
             const res = await axios.delete(url, {
                 headers: {
-                    'authorization': localStorage.getItem("token"),
+                    'authorization': localStorage.getItem("iNotebook-tkn"),
                     'Content-Type': 'application/json'
                 }
             }
@@ -127,7 +127,7 @@ const NoteState = (props) => {
             setProgress(30)
             const res = await axios.patch(url, body, {
                 headers: {
-                    'authorization': localStorage.getItem("token"),
+                    'authorization': localStorage.getItem("iNotebook-tkn"),
                     'Content-Type': 'application/json'
                 }
             }
