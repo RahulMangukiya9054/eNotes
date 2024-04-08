@@ -23,7 +23,7 @@ const Notes = () => {
             fetchAllNotes(showAlert, setProgress, setLoading)
         }
         else {
-            navigate("/login");
+            navigate("/loginrequire");
         }
         // eslint-disable-next-line
     }, [])

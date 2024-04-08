@@ -33,7 +33,9 @@ const Login = () => {
                 // Redirect to home page
                 let token = res.data.data.authToken[0].token;
                 localStorage.setItem("iNotebook-tkn", token)
-                navigate('/');
+                if (localStorage.getItem("iNotebook-tkn")) {
+                    navigate('/home');
+                }
                 setLoading(false)
                 setProgress(100)
                 showAlert("success", "Logged in Successfully!")

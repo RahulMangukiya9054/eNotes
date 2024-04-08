@@ -12,6 +12,8 @@ import Profile from './components/Profile';
 import LoadingBar from 'react-top-loading-bar';
 import progressContext from './context/progress/progressContext';
 import Spinner from './components/Spinner';
+import LoginRequired from './components/LoginRequired';
+import Dashboard from './components/Dashboard';
 
 
 function App() {
@@ -33,8 +35,10 @@ function App() {
         <Alert alert={alert} />
         <div className="container">
           <Routes>
-            <Route exact path='/' element={<Home />} />
+            <Route exact path='/' element={<Dashboard />} />
+            <Route exact path='/home' element={<Home />} />
             <Route exact path='/about' element={<About />} />
+            <Route exact path='/loginrequire' element={<LoginRequired />} />
             <Route exact path='/login' element={<Login />} />
             <Route exact path='/signup' element={<Signup />} />
             <Route exact path='/profile' element={<Profile />} />

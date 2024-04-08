@@ -9,7 +9,7 @@ const About = () => {
       <div className="row">
         <div className="">
           <div className="text-center mb-5">
-            <h2 className="display-4">Welcome to iNotebook!</h2>
+            <h2 className="display-4">About iNotebook!</h2>
             <p className="lead">iNotebook is your personal space online where you can write down your thoughts, ideas, and anything important. It’s easy and safe to use, anytime and anywhere.</p>
           </div>
 

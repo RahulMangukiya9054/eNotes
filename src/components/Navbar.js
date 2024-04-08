@@ -1,34 +1,29 @@
 import React, { useContext } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import alertContext from '../context/alert/alertContext';
-import progressContext from '../context/progress/progressContext';
 
 const Navbar = () => {
 
     let location = useLocation()
     const navigate = useNavigate();
     const { showAlert } = useContext(alertContext)
-    const { setLoading } = useContext(progressContext)
 
     const handleHome = () => {
         if (localStorage.getItem("iNotebook-tkn")) {
-            navigate("/");
+            navigate("/home");
         }
         else {
-            showAlert("danger", "Login Required!")
+            navigate("/loginrequire")
         }
     }
 
     const handleLogOut = () => {
-        setLoading(true)
         localStorage.removeItem("iNotebook-tkn")
         showAlert("success", "Log out Successfully!")
-        navigate("/login");
-        setLoading(false)
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{zIndex: "5"}}>
             <div className="container-fluid">
                 <Link className="navbar-brand" to="./">iNotebook</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +32,7 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} aria-current="page" to="./" onClick={handleHome}>Home</Link>
+                            <Link className={`nav-link ${location.pathname === "/home" ? "active" : ""}`} aria-current="page" to="./home" onClick={handleHome}>Home</Link>
                         </li>
                         <li className="nav-item">
                             <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} to="./about">About</Link>
