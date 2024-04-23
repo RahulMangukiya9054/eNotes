@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 const LoginRequired = () => {
 
+    document.title = `eNotes - Login Required`
+
     const open = useRef(null)
     const close = useRef(null)
 
