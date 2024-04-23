@@ -19,7 +19,7 @@ const Notes = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (localStorage.getItem("iNotebook-tkn")) {
+        if (localStorage.getItem("eNotes-tkn")) {
             fetchAllNotes(showAlert, setProgress, setLoading)
         }
         else {

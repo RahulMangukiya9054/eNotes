@@ -9,7 +9,7 @@ const Navbar = () => {
     const { showAlert } = useContext(alertContext)
 
     const handleHome = () => {
-        if (localStorage.getItem("iNotebook-tkn")) {
+        if (localStorage.getItem("eNotes-tkn")) {
             navigate("/home");
         }
         else {
@@ -18,14 +18,14 @@ const Navbar = () => {
     }
 
     const handleLogOut = () => {
-        localStorage.removeItem("iNotebook-tkn")
+        localStorage.removeItem("eNotes-tkn")
         showAlert("success", "Log out Successfully!")
     }
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{zIndex: "5"}}>
             <div className="container-fluid">
-                <Link className="navbar-brand" to="./">iNotebook</Link>
+                <Link className="navbar-brand" to="./">eNotes</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -38,7 +38,7 @@ const Navbar = () => {
                             <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} to="./about">About</Link>
                         </li>
                     </ul>
-                    {localStorage.getItem("iNotebook-tkn") ? <form className="d-flex">
+                    {localStorage.getItem("eNotes-tkn") ? <form className="d-flex">
                         <Link className="btn btn-primary mx-1" to="./profile" role="button"><i className="fa-regular fa-user" title='Profile'></i></Link>
                         <Link className="btn btn-danger mx-1" to="./login" role="button" onClick={handleLogOut}>Log out</Link>
                     </form> : <form className="d-flex">

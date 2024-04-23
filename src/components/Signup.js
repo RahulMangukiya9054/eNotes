@@ -6,7 +6,7 @@ import progressContext from '../context/progress/progressContext'
 
 const Signup = () => {
 
-    document.title = "iNotebook - Signup";
+    document.title = "eNotes - Signup";
 
     const host = process.env.REACT_APP_HOST;
     const [body, setBody] = useState({ name: "", email: "", password: "" })

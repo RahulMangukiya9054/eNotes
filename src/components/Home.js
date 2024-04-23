@@ -4,7 +4,7 @@ import AddNote from './AddNote'
 
 const Home = () => {
 
-  document.title = "iNotebook"
+  document.title = "eNotes"
 
   return (
     <div className="container my-5">

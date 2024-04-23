@@ -5,7 +5,7 @@ import alertContext from '../context/alert/alertContext'
 
 const Profile = () => {
 
-    document.title = "iNotebook - Profile";
+    document.title = "eNotes - Profile";
 
     const host = process.env.REACT_APP_HOST;
     const [profile, setProfile] = useState({})
@@ -20,7 +20,7 @@ const Profile = () => {
             setProgress(30)
             const res = await axios.get(url, {
                 headers: {
-                    'authorization': localStorage.getItem("iNotebook-tkn"),
+                    'authorization': localStorage.getItem("eNotes-tkn"),
                     'Content-Type': 'application/json'
                 }
             }
@@ -68,7 +68,7 @@ const Profile = () => {
                             <h3 className="card-title mb-4">User Information</h3>
                             <p className="card-text"><strong>Name : </strong>{profile.name}</p>
                             <p className="card-text"><strong>Email : </strong>{profile.email}</p>
-                            <p className="card-text"><strong>iNotebook member since : </strong>{profile.createdAt}</p>
+                            <p className="card-text"><strong>eNotes member since : </strong>{profile.createdAt}</p>
                         </div>
                     </div>
                 </div>

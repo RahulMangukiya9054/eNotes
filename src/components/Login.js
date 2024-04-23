@@ -6,7 +6,7 @@ import progressContext from '../context/progress/progressContext';
 
 const Login = () => {
 
-    document.title = "iNotebook - Login";
+    document.title = "eNotes - Login";
 
     const host = process.env.REACT_APP_HOST;
     const [body, setBody] = useState({ email: "", password: "" })
@@ -32,8 +32,8 @@ const Login = () => {
             if (res.data.type === "Success") {
                 // Redirect to home page
                 let token = res.data.data.authToken[0].token;
-                localStorage.setItem("iNotebook-tkn", token)
-                if (localStorage.getItem("iNotebook-tkn")) {
+                localStorage.setItem("eNotes-tkn", token)
+                if (localStorage.getItem("eNotes-tkn")) {
                     navigate('/home');
                 }
                 setLoading(false)
@@ -56,7 +56,7 @@ const Login = () => {
     return (
         <div className='py-4 d-flex justify-content-center'>
             <div className="container-fluid h-custom my-3">
-                <h2 className='display-4 text-center'>Log in to iNotebook</h2>
+                <h2 className='display-4 text-center'>Log in to eNotes</h2>
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-md-9 col-lg-6 col-xl-5">
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"

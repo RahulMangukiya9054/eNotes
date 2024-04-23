@@ -29,7 +29,7 @@ const LoginRequired = () => {
 
                         </div>
                         <div className="modal-body">
-                            <p>Please login to continue with iNotebook.</p>
+                            <p>Please login to continue with eNotes.</p>
                         </div>
                         <div className="modal-footer">
                             <button type="button" ref={close} className="btn btn-secondary d-none" data-bs-dismiss="modal">Close</button>
